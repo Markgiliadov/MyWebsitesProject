@@ -10,13 +10,21 @@
       crossorigin="anonymous"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>My Sites</title>
+    <title><%= site.title %></title>
   </head>
   <body>
     <div class="container">
       <h1 class="mb-1"><%= site.title %></h1>
-      <a href="/" class="btn btn-secondary">All Sites</a>
-      <div><%- site.sanitizedHtml %></div>
+      <a href="/" class="btn btn-secondary">Return all Sites</a>
+
+      <img
+        class="rounded float-right"
+        src="<%=site.imgUrl%>"
+        width="450px"
+        height="550px"
+      />
+
+      <div class="mt-4"><%- site.sanitizedHtml %></div>
     </div>
   </body>
 </html>

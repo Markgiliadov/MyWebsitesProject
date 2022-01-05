@@ -6,11 +6,6 @@ router.get("/new", (req, res) => {
   res.render("sites/new", { site: new Site() });
 });
 
-router.get("/edit/:id", async (req, res) => {
-  const site = await Site.findById(req.params.id);
-  res.render("sites/edit", { site: site });
-});
-
 router.get("/:slug", async (req, res) => {
   const site = await Site.findOne({ slug: req.params.slug });
   if (site == null) res.redirect("/");
@@ -24,15 +19,6 @@ router.post(
     next();
   },
   saveSiteAndRedirect("new")
-);
-
-router.put(
-  "/:id",
-  async (req, res, next) => {
-    req.site = await Site.findById(req.params.id);
-    next();
-  },
-  saveSiteAndRedirect("edit")
 );
 
 router.delete("/:id", async (req, res) => {
